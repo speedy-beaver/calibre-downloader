@@ -25,4 +25,6 @@ jobs:
       - name: Test a download
         run: |
           mkdir test-download
-          docker run -e RECIPE="The Verge" -v ./test-download:/tmp/calibre -it --rm calibre-downloader
+          docker run -e RECIPE="The Verge" -v ./test-download:/tmp/calibre --rm calibre-downloader
+          echo "Show the downloads"
+          ls
