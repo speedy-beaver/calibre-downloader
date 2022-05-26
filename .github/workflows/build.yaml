@@ -1,0 +1,21 @@
+name: Build and test container
+# This workflow is triggered on pushes to the repository.
+on: [push]
+
+jobs:
+  build_and_test:
+    name: Build and test container 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-get -y update
+          sudo apt-get -y docker.io
+      - name: Get repository
+        uses: actions/checkout@v2
+      - name: Build Docker container
+        run: docker build -t calibre-downloader .
+      - name: Test a download
+        run: |
+          mkdir test-download
+          docker run -e RECIPE="The Verge" -v ./test-download:/tmp/calibre -it --rm calibre-downloader
