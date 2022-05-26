@@ -12,7 +12,9 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 FROM ubuntu:latest
-RUN apt-get update && apt-get install -y calibre-bin
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive TZ=Europe/Stockholm apt-get -y install tzdata
+RUN apt-get install -y calibre-bin
 
 ENV RECIPE "The Economist"
 ENV FORMAT "epub"
