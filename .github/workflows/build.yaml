@@ -28,3 +28,5 @@ jobs:
           docker run -e RECIPE="The Verge" -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader
       - name: Show the downloads
         run: if [ -f "testdownload/The Verge.epub" ] ; then echo "Success" ; else false ; fi
+      - name: Show the images
+        run: docker images
