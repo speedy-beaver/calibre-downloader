@@ -1,0 +1,48 @@
+name: Build and test container
+# This workflow is triggered on pushes to the repository.
+on: 
+  release:
+    types: [published]
+
+jobs:
+  build_and_test:
+    name: Build and test container 
+    runs-on: ubuntu-latest
+    steps:
+#      - name: Install dependencies
+#        run: |
+#          sudo apt-get -y update
+#          echo "Remove old crap"
+#          sudo apt-get -y remove docker docker-engine docker.io containerd runc
+#          sudo apt-get -y install ca-certificates curl gnupg lsb-release
+#          sudo mkdir -p /etc/apt/keyrings
+#          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+#          echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+#          sudo apt-get -y update
+#          sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+      - name: Get repository
+        uses: actions/checkout@v3
+      - name: Show environment
+        run: env
+      - name: Show tag
+        run: |
+          echo "Ref"
+          echo ${{ github.ref }} 
+          echo "Ref name"
+          echo ${{ github.ref_name }} 
+#      - name: Build Docker container
+#        run: docker build --label "org.opencontainers.image.source=https://github.com/speedy-beaver/calibre-downloader" -t calibre-downloader .
+#      - name: Test a download
+#        run: |
+#          mkdir testdownload
+#          docker run -e RECIPE="The Verge" -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader
+#      - name: Show the downloads
+#        run: if [ -f "testdownload/The Verge.epub" ] ; then echo "Success" ; else false ; fi
+#      - name: Show the images
+#        run: docker images
+#      - name: Tag the image and push to registry
+#        run: |
+#          IMAGEID=$(docker inspect calibre-downloader | grep "Id" | cut -d: -f3 | cut -c 1-12)
+#          docker tag $IMAGEID ghcr.io/speedy-beaver/calibre-downloader:0.0.1
+#          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u speedy-beaver --password-stdin
+#          docker push ghcr.io/speedy-beaver/calibre-downloader:0.0.1
