@@ -28,11 +28,3 @@ jobs:
           docker run -e RECIPE="The Verge" -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader
       - name: Show the downloads
         run: if [ -f "testdownload/The Verge.epub" ] ; then echo "Success" ; else false ; fi
-      - name: Show the images
-        run: docker images
-      - name: Tag the image and push to registry
-        run: |
-          IMAGEID=$(docker inspect calibre-downloader | grep "Id" | cut -d: -f3 | cut -c 1-12)
-          docker tag $IMAGEID ghcr.io/speedy-beaver/calibre-downloader:0.0.1
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u speedy-beaver --password-stdin
-          docker push ghcr.io/speedy-beaver/calibre-downloader:0.0.1
