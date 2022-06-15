@@ -12,7 +12,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #LABEL org.opencontainers.image.source="https://github.com/speedy-beaver/calibre-downloader"
-FROM ubuntu:focal
+FROM ubuntu:latest
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive TZ=Europe/Stockholm apt-get -y install tzdata
 #RUN apt-get -y install wget sudo python3 xz-utils libgl1-mesa-dev libxcb-cursor0 libnss3 
