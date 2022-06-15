@@ -15,7 +15,7 @@
 FROM ubuntu:latest
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive TZ=Europe/Stockholm apt-get -y install tzdata
-RUN apt-get -y install wget sudo python3 xz-utils
+RUN apt-get -y install wget sudo python3 xz-utils libgl1-mesa-dev libxcb-cursor0
 RUN sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
 
 ENV RECIPE "The Economist"
