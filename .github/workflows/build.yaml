@@ -26,7 +26,7 @@ jobs:
       - name: Test a download
         run: |
           mkdir testdownload
-          docker run -e RECIPE="economist" -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader
+          docker run -e RECIPE="The Economist" -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader
       - name: Show the downloads
         run: ls testdownload
       - name: Test the downloads
