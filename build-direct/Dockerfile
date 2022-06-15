@@ -15,7 +15,8 @@
 FROM ubuntu:focal
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive TZ=Europe/Stockholm apt-get -y install tzdata
-RUN apt-get -y install wget sudo python3 xz-utils libgl1-mesa-dev libxcb-cursor0 libnss3
+#RUN apt-get -y install wget sudo python3 xz-utils libgl1-mesa-dev libxcb-cursor0 libnss3 
+RUN apt-get -y install wget sudo dbus fcitx-rime fonts-wqy-microhei jq libnss3 libqpdf26 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 poppler-utils python3 python3-xdg ttf-wqy-zenhei wget xz-utils
 RUN sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
 
 ENV RECIPE "The Economist"
