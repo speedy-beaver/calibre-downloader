@@ -21,7 +21,8 @@ jobs:
       - name: Get repository
         uses: actions/checkout@v2
       - name: Build Docker container
-        run: docker build --label "org.opencontainers.image.source=https://github.com/speedy-beaver/calibre-downloader" -t calibre-downloader .
+#        run: docker build --label "org.opencontainers.image.source=https://github.com/speedy-beaver/calibre-downloader" -t calibre-downloader .
+        run: docker build --label "org.opencontainers.image.source=https://github.com/speedy-beaver/calibre-downloader" -t calibre-downloader ./Dockerfile-direct
       - name: Test a download
         run: |
           mkdir testdownload
