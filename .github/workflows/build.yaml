@@ -30,3 +30,7 @@ jobs:
         run: if [ -f "testdownload/The Verge.epub" ] ; then echo "Success" ; else false ; fi
       - name: Check where is the recipe
         run: docker run -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader find / -name "*economist.recipe" 
+      - name: Check where is find
+        run: docker run -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader which find
+      - name: Check the environment
+        run: docker run -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader env        
