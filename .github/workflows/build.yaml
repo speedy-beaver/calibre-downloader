@@ -26,6 +26,7 @@ jobs:
         run: |
           mkdir testdownload
           docker run -e RECIPE="The Verge" -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader
-          docker run -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader find / -name "*economist.recipe" 
       - name: Show the downloads
         run: if [ -f "testdownload/The Verge.epub" ] ; then echo "Success" ; else false ; fi
+      - name: Check where is the recipe
+        run: docker run -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader find / -name "*economist.recipe" 
