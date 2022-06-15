@@ -15,7 +15,7 @@
 FROM ubuntu:latest
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive TZ=Europe/Stockholm apt-get -y install tzdata
-RUN apt-get install wget
+RUN apt-get -y install wget
 RUN sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
 
 ENV RECIPE "The Economist"
