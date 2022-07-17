@@ -21,21 +21,12 @@ jobs:
       - name: Get repository
         uses: actions/checkout@v2
       - name: Build Docker container
-#        run: docker build --label "org.opencontainers.image.source=https://github.com/speedy-beaver/calibre-downloader" -t calibre-downloader .
-        run: docker build --label "org.opencontainers.image.source=https://github.com/speedy-beaver/calibre-downloader" -t calibre-downloader ./build-direct
+        run: docker build --label "org.opencontainers.image.source=https://github.com/speedy-beaver/calibre-downloader" -t calibre-downloader .
       - name: Test a download
         run: |
           mkdir testdownload
-          docker run -e RECIPE="The Economist" -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader
+          docker run -e RECIPE="The Verge" -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader
       - name: Show the downloads
         run: ls testdownload
       - name: Test the downloads
-        run: if [ -f "testdownload/The Verge.epub" ] ; then echo "Success" ; else false ; fi
-#      - name: Check where is the recipe
-#        run: docker run -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader find / -name "*conomist" 
-#      - name: Check what is in the recipe directory
-#        run: docker run -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader ls /usr/lib/calibre/calibre/web/feeds/recipes
-#      - name: Check where is find
-#        run: docker run -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader which find
-#      - name: Check the environment
-#        run: docker run -v $(pwd)/testdownload:/tmp/calibre --rm calibre-downloader env        
+        run: if [ -f "testdownload/The Verge.epub" ] ; then echo "Success" ; else false ; fi   
