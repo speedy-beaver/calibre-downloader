@@ -23,4 +23,4 @@ ENV OUTPUTPROFILE "kindle"
 
 VOLUME /tmp/calibre
 
-CMD ["bash","-c","ebook-convert \"${RECIPE}\".recipe /tmp/calibre/\"${RECIPE}\".${FORMAT} --output-profile ${OUTPUTPROFILE}"]
+CMD ["bash","-c","ebook-convert \"${RECIPE}\".recipe /tmp/calibre/\"${RECIPE}\".${FORMAT} --output-profile ${OUTPUTPROFILE} --title \"${RECIPE} $(date +%d\\/%b\\/%Y)\""]
